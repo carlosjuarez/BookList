@@ -1,7 +1,12 @@
-package com.juvcarl.batch.mcs.booklist.objects;
+package com.juvcarl.batch.mcs.booklist.model.objects;
+
+import android.databinding.BindingAdapter;
+import android.widget.ImageView;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.juvcarl.batch.mcs.booklist.R;
+import com.squareup.picasso.Picasso;
 
 public class Item {
 
@@ -52,6 +57,11 @@ public class Item {
     public Item withAuthor(String author) {
         this.author = author;
         return this;
+    }
+
+    @BindingAdapter("imageUrl")
+    public static void loadImage(ImageView view, String imageUrl) {
+        Picasso.get().load(imageUrl).error(R.drawable.image_nia_gray).into(view);
     }
 
     @Override
